@@ -1,0 +1,24 @@
+
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .spacer {
+    flex: 1;
+  }
+  
+  .nav-buttons {
+    display: flex;
+  }
+  
+  .nav-button {
+    font-size: 20px;
+    margin-left: 10px; /* Adjust as needed */
+    color: black;
+  }
+  
+  
