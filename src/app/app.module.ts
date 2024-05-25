@@ -15,6 +15,7 @@ import { routes } from './app.routes';
 import { BooksService } from '../services/books.service';
 import { CharactersService } from '../services/characters.service';
 import { HousesService } from '../services/houses.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,8 +29,9 @@ import { HousesService } from '../services/houses.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
-    MatIconModule, // Add MatIconModule here
+    MatIconModule,
     RouterModule.forRoot(routes)
   ],
   providers:[
