@@ -1,1 +1,15 @@
-<p>houses works!</p>
+<div *ngIf="houses.length > 0">
+    <h2>Houses of Ice and Fire</h2>
+    <ul>
+      <li *ngFor="let house of houses">
+        <h3>{{ house.name }}</h3>
+        <p><strong>Region:</strong> {{ house.region }}</p>
+        <p><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</p>
+        <p><strong>Words:</strong> {{ house.words }}</p>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="houses.length === 0">
+    <p>Loading houses...</p>
+  </div>
+  
