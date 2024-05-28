@@ -1,0 +1,24 @@
+.house-details-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .house-card {
+    max-width: 600px;
+    width: 100%;
+    background-color: cornflowerblue;
+  }
+  
+  .house-card mat-card-title h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .house-card mat-card-content p {
+    margin: 10px 5px;
+    font-size: 1.1em;
+  }
+
+  

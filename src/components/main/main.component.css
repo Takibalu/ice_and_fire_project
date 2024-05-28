@@ -1,7 +1,6 @@
 .main-container {
     text-align: center;
     color: #fff;
-    background-image: url('/src/assets/banner.jpg');
     background-position: center;
     height: 100vh;
     display: flex;

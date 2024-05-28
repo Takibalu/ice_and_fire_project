@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { House } from '../models/house';
 import { API_URL } from './constants';
 
@@ -13,12 +13,23 @@ export class HousesService {
 
   constructor(private http: HttpClient) { }
 
-  getHouses(): Observable<House[]> {
-    return this.http.get<House[]>(this.apiUrl);
+  getHouses(details: String): Observable<House[]> {
+    return this.http.get<House[]>(this.apiUrl+details);
   }
 
-  getHouse(id: number): Observable<House> {
+  getHouse(id: string): Observable<House> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<House>(url);
+  }
+  getHouseByURL(url: string): Observable<House> {
+    const houseFromLS = localStorage.getItem(url);
+    if (houseFromLS) return of(JSON.parse(houseFromLS));
+  
+    return this.http.get<House>(url).pipe(
+      map(house => {
+        localStorage.setItem(url, JSON.stringify(house));
+        return house;
+      })
+    );
   }
 }

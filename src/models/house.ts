@@ -1,3 +1,5 @@
+import { Character } from "./character";
+
 export interface House {
     url: string;
     name: string;

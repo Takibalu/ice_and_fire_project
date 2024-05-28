@@ -1,0 +1,59 @@
+<div *ngIf="house" class="house-details-container">
+  <mat-card class="house-card">
+    <mat-card-header>
+      <mat-card-title>
+        <h2>{{ house.name ? house.name : 'Nameless' }}</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ng-container *ngIf="house.region">
+        <p><strong>Region:</strong> {{ house.region }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.coatOfArms">
+        <p><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.words">
+        <p><strong>Words:</strong> {{ house.words }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.titles && house.titles.length > 0">
+        <p><strong>Titles:</strong> {{ house.titles.join(', ') }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.seats && house.seats.length > 0">
+        <p><strong>Seats:</strong> {{ house.seats.join(', ') }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.currentLord">
+        <p><strong>Current Lord:</strong> {{ house.currentLord }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.heir">
+        <p><strong>Heir:</strong> {{ house.heir }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.overlord">
+        <p><strong>Overlord:</strong> {{ house.overlord }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.founded">
+        <p><strong>Founded:</strong> {{ house.founded }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.founder">
+        <p><strong>Founder:</strong> {{ house.founder }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.diedOut">
+        <p><strong>Died Out:</strong> {{ house.diedOut }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.ancestralWeapons && house.ancestralWeapons.length > 0">
+        <p><strong>Ancestral Weapons:</strong> {{ house.ancestralWeapons.join(', ') }}</p>
+      </ng-container>
+      <ng-container *ngIf="house.cadetBranches && house.cadetBranches.length > 0">
+        <p><strong>Cadet Branches:</strong></p>
+        <ng-container *ngFor="let cadetBranch of house.cadetBranches">
+          <a (click)="houseDetailsFromStr(cadetBranch)">{{ cadetBranch }}</a>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="house.swornMembers && house.swornMembers.length > 0">
+        <p><strong>Sworn Members:</strong></p>
+        <ng-container *ngFor="let swornMember of house.swornMembers">
+          <a (click)="characterDetailsFromStr(swornMember)">{{ swornMember }} <br></a>
+        </ng-container>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>

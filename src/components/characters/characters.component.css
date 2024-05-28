@@ -1,0 +1,28 @@
+.container {
+    padding: 20px;
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .character-card {
+    width: 100%;
+    background-color: cornflowerblue;
+  }
+  
+  .character-name {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  

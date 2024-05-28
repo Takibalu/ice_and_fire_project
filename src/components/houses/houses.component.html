@@ -1,15 +1,52 @@
-<div *ngIf="houses.length > 0">
-    <h2>Houses of Ice and Fire</h2>
-    <ul>
-      <li *ngFor="let house of houses">
-        <h3>{{ house.name }}</h3>
-        <p><strong>Region:</strong> {{ house.region }}</p>
-        <p><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</p>
-        <p><strong>Words:</strong> {{ house.words }}</p>
-      </li>
-    </ul>
+<div class="container" *ngIf="houses.length > 0">
+  <h2>Houses of Ice and Fire</h2>
+  <div class="grid-container">
+    <mat-card *ngFor="let house of houses" class="house-card">
+      <mat-card-header>
+        <mat-card-title class="house-name" (click)="houseDetails(house.url.split('/').pop())">{{ house.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ng-container *ngIf="house.region">
+          <p><strong>Region:</strong> {{ house.region }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.coatOfArms">
+          <p><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.words">
+          <p><strong>Words:</strong> {{ house.words }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.titles && house.titles.length > 0">
+          <p><strong>Titles:</strong> {{ house.titles.join(', ') }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.seats && house.seats.length > 0">
+          <p><strong>Seats:</strong> {{ house.seats.join(', ') }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.founded">
+          <p><strong>Founded:</strong> {{ house.founded }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.diedOut">
+          <p><strong>Died Out:</strong> {{ house.diedOut }}</p>
+        </ng-container>
+        <ng-container *ngIf="house.ancestralWeapons && house.ancestralWeapons.length > 0">
+          <p><strong>Ancestral Weapons:</strong> {{ house.ancestralWeapons.join(', ') }}</p>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
   </div>
-  <div *ngIf="houses.length === 0">
-    <p>Loading houses...</p>
+
+  <!-- Pagination Controls -->
+  <div class="pagination-controls">
+    <button mat-icon-button (click)="previousPage()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <span>Page {{page}}</span>
+    <button mat-icon-button (click)="nextPage()">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
   </div>
-  
+</div>
+
+<div class="loading-container" *ngIf="houses.length === 0">
+  <mat-spinner diameter="50"></mat-spinner>
+  <p>Loading houses...</p>
+</div>
