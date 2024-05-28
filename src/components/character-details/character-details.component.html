@@ -1,1 +1,66 @@
-<p>character-details works!</p>
+<div *ngIf="character" class="character-details-container">
+    <mat-card class="character-card">
+        <mat-card-header>
+            <mat-card-title>
+                <h2>{{ character.name ? character.name : 'Nameless' }}</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <ng-container *ngIf="character.gender">
+                <p><strong>Gender:</strong> {{ character.gender }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.culture">
+                <p><strong>Culture:</strong> {{ character.culture }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.born">
+                <p><strong>Born:</strong> {{ character.born }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.died">
+                <p><strong>Died:</strong> {{ character.died }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.titles && character.titles.length > 0">
+                <p><strong>Titles:</strong> {{ character.titles.join(', ') }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.aliases && character.aliases.length > 0">
+                <p><strong>Aliases:</strong> {{ character.aliases.join(', ') }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.father">
+                <p><strong>Father:</strong> {{ character.father }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.mother">
+                <p><strong>Mother:</strong> {{ character.mother }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.spouse">
+                <p><strong>Spouse:</strong> {{ character.spouse }}</p>
+            </ng-container>
+            <ng-container *ngIf="character.allegiances && character.allegiances.length > 0">
+                <p><strong>Allegiances:</strong></p>
+                <ng-container *ngFor="let allegiance of character.allegiances">
+                    <a (click)="houseDetailsFromStr(allegiance)">{{ allegiance }}<br></a>
+                </ng-container>
+            </ng-container>
+            
+            <ng-container *ngIf="character.povBooks && character.povBooks.length > 0">
+                <p><strong>Pov Books:</strong></p>
+                <ng-container *ngFor="let povBook of character.povBooks">
+                    <a (click)="bookDetailsFromStr(povBook)">{{ povBook }}<br></a>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="character.books && character.books.length > 0">
+                <p><strong>Books:</strong></p>
+                <ng-container *ngFor="let book of character.books">
+                    <a (click)="bookDetailsFromStr(book)">{{ book }}<br></a>
+                </ng-container>
+            </ng-container>
+            
+            <ng-container *ngIf="character.tvSeries && character.tvSeries.length > 0">
+                <p><strong>TV Series:</strong> {{ character.tvSeries.join(', ') }}</p>
+            </ng-container>
+
+            <ng-container *ngIf="character.playedBy && character.playedBy.length > 0">
+                <p><strong>Played By:</strong> {{ character.playedBy.join(', ') }}</p>
+            </ng-container>
+
+        </mat-card-content>
+    </mat-card>
+</div>

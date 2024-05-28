@@ -6,6 +6,7 @@
         <mat-card-title class="house-name" (click)="houseDetails(house.url.split('/').pop())">{{ house.name }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
+        <br>
         <ng-container *ngIf="house.region">
           <p><strong>Region:</strong> {{ house.region }}</p>
         </ng-container>

@@ -7,15 +7,16 @@ import { BookDetailsComponent } from '../components/book-details/book-details.co
 import { CharacterDetailsComponent } from '../components/character-details/character-details.component';
 import { HouseDetailsComponent } from '../components/house-details/house-details.component';
 
+// Define the routes for the application
 export const routes: Routes = [
-    {path: '', component: MainComponent},
+    {path: '', component: MainComponent}, // Default route
+
+    {path: 'books', component: BooksComponent}, // Route for displaying books
+    {path: 'books/:id', component: BookDetailsComponent}, // Route for displaying details of a specific book
     
-    {path: 'books', component: BooksComponent},
-    {path: 'books/:id', component:BookDetailsComponent},
-
-    {path: 'characters', component: CharactersComponent},
-    {path: 'characters/:id',component:CharacterDetailsComponent},
-
-    {path: 'houses', component: HousesComponent},
-    {path: 'houses/:id',component:HouseDetailsComponent},
+    {path: 'characters', component: CharactersComponent}, // Route for displaying characters
+    {path: 'characters/:id', component: CharacterDetailsComponent}, // Route for displaying details of a specific character
+    
+    {path: 'houses', component: HousesComponent}, // Route for displaying houses
+    {path: 'houses/:id', component: HouseDetailsComponent}, // Route for displaying details of a specific house
 ];

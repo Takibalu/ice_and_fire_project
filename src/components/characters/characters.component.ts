@@ -18,7 +18,7 @@ export class CharactersComponent implements OnInit{
   }
 
   fetchCharacters(){
-    this.charactersService.getCharacters(`?page=${this.page}&pageSize=8`)
+    this.charactersService.getCharacters(`?page=${this.page}&pageSize=10`)
     .subscribe((data: any[]) => {
       this.characters = data;
     });

@@ -17,6 +17,7 @@ export class HouseDetailsComponent implements OnInit {
   public houseId!: string;
   public CadetBranches!: House[];
   public SwornMembers!: Character[];
+  public Overlord!: House;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,9 +62,10 @@ export class HouseDetailsComponent implements OnInit {
     });
   }
   overlord(){
-    this.charactersService.getCharacterByURL(this.house.overlord)
-    .subscribe(c=>{
-      this.house.overlord = c.name;
+    this.housesService.getHouseByURL(this.house.overlord)
+    .subscribe(h=>{
+      this.house.overlord = h.name;
+      this.Overlord = h;
     });
   }
   founder(){
@@ -88,8 +90,8 @@ export class HouseDetailsComponent implements OnInit {
   }
 
   houseDetailsFromStr(name: string): void {
-    const foundHouse = this.CadetBranches.find(branch => branch.name === name);
-    console.log(foundHouse);
+    let foundHouse = this.CadetBranches.find(branch => branch.name === name);
+    if(foundHouse==undefined) foundHouse= this.Overlord.name ===name? this.Overlord :undefined;
     if (foundHouse && foundHouse.url) {
       const houseId = foundHouse.url.split('/').pop();
       console.log(houseId);

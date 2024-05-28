@@ -1,0 +1,22 @@
+.book-details-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .book-card {
+    max-width: 800px;
+    width: 100%;
+    background-color: cornflowerblue;
+  }
+  
+  .book-card mat-card-title h2 {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .book-card mat-card-content p {
+    margin: 10px 5px;
+    font-size: 1.1em;
+  }

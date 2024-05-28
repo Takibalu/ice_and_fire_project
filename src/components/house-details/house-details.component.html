@@ -5,6 +5,7 @@
         <h2>{{ house.name ? house.name : 'Nameless' }}</h2>
       </mat-card-title>
     </mat-card-header>
+    <br>
     <mat-card-content>
       <ng-container *ngIf="house.region">
         <p><strong>Region:</strong> {{ house.region }}</p>
@@ -22,19 +23,23 @@
         <p><strong>Seats:</strong> {{ house.seats.join(', ') }}</p>
       </ng-container>
       <ng-container *ngIf="house.currentLord">
-        <p><strong>Current Lord:</strong> {{ house.currentLord }}</p>
+        <p><strong>Current Lord:</strong></p>
+        <p (click)="characterDetailsFromStr(house.currentLord)">{{ house.currentLord }}</p>
       </ng-container>
       <ng-container *ngIf="house.heir">
-        <p><strong>Heir:</strong> {{ house.heir }}</p>
+        <p><strong>Heir:</strong></p>
+        <p (click)="characterDetailsFromStr(house.heir)">{{ house.heir }}</p>
       </ng-container>
       <ng-container *ngIf="house.overlord">
-        <p><strong>Overlord:</strong> {{ house.overlord }}</p>
+        <p><strong>Overlord:</strong></p> 
+        <p (click)="houseDetailsFromStr(house.overlord)">{{ house.overlord }}</p>
       </ng-container>
       <ng-container *ngIf="house.founded">
         <p><strong>Founded:</strong> {{ house.founded }}</p>
       </ng-container>
       <ng-container *ngIf="house.founder">
-        <p><strong>Founder:</strong> {{ house.founder }}</p>
+        <p><strong>Founder:</strong></p> 
+        <p (click)="characterDetailsFromStr(house.founder)">{{ house.founder }}</p>
       </ng-container>
       <ng-container *ngIf="house.diedOut">
         <p><strong>Died Out:</strong> {{ house.diedOut }}</p>
@@ -45,13 +50,13 @@
       <ng-container *ngIf="house.cadetBranches && house.cadetBranches.length > 0">
         <p><strong>Cadet Branches:</strong></p>
         <ng-container *ngFor="let cadetBranch of house.cadetBranches">
-          <a (click)="houseDetailsFromStr(cadetBranch)">{{ cadetBranch }}</a>
+          <p (click)="houseDetailsFromStr(cadetBranch)">{{ cadetBranch }}<br></p>
         </ng-container>
       </ng-container>
       <ng-container *ngIf="house.swornMembers && house.swornMembers.length > 0">
         <p><strong>Sworn Members:</strong></p>
         <ng-container *ngFor="let swornMember of house.swornMembers">
-          <a (click)="characterDetailsFromStr(swornMember)">{{ swornMember }} <br></a>
+          <p (click)="characterDetailsFromStr(swornMember)">{{ swornMember }} <br></p>
         </ng-container>
       </ng-container>
     </mat-card-content>

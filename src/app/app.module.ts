@@ -22,10 +22,12 @@ import { MatListModule } from '@angular/material/list';
 import { HouseDetailsComponent } from '../components/house-details/house-details.component';
 import { BookDetailsComponent } from '../components/book-details/book-details.component';
 import { CharacterDetailsComponent } from '../components/character-details/character-details.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
   declarations: [
+    // Declare all the components used in the application
     AppComponent,
     MainComponent,
     BooksComponent,
@@ -34,9 +36,9 @@ import { CharacterDetailsComponent } from '../components/character-details/chara
     CharacterDetailsComponent,
     HousesComponent,
     HouseDetailsComponent,
-
   ],
   imports: [
+    // Import Angular and third-party modules required for the application
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -45,13 +47,15 @@ import { CharacterDetailsComponent } from '../components/character-details/chara
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes) // Set up routing with defined routes
   ],
   providers:[
+    // Register services and any providers needed for dependency injection
     BooksService,
     CharactersService,
     HousesService,
+    provideAnimationsAsync(), // Enable asynchronous animations
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // Define the root component that Angular should bootstrap
 })
 export class AppModule {}
